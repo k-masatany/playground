@@ -32,8 +32,8 @@ set -x GOPATH $HOME/go
 set -x PATH $PATH $GOPATH/bin
 set -x GOENV_ROOT "$HOME/.anyenv/envs/goenv"
 set -x PATH $PATH "$GOENV_ROOT/bin"
-set -gx PATH '/Users/k-masatany/.goenv/shims' $PATH
-set -gx GOENV_SHELL fish
+set -x PATH $PATH $GOENV_ROOT/shims
+set -x GOENV_SHELL "fish"
 source '/Users/k-masatany/.anyenv/envs/goenv/libexec/../completions/goenv.fish'
 command goenv rehash 2>/dev/null
 function goenv
@@ -51,8 +51,8 @@ end
 # nodenv
 set -x NODENV_ROOT "$HOME/.anyenv/envs/nodenv"
 set -x PATH $PATH "$NODENV_ROOT/bin"
-set -gx PATH '/Users/k-masatany/.nodenv/shims' $PATH
-set -gx NODENV_SHELL fish
+set -x PATH $PATH '/Users/k-masatany/.nodenv/shims'
+set -x NODENV_SHELL fish
 source '/Users/k-masatany/.anyenv/envs/nodenv/libexec/../completions/nodenv.fish'
 command nodenv rehash 2>/dev/null
 function nodenv
@@ -67,20 +67,29 @@ function nodenv
   end
 end
 
+# direnv
+eval (direnv hook fish)
+
 # rust
 set -x PATH $PATH "$HOME/.cargo/bin"
 set -x PATH $PATH "/usr/local/sbin"
-set -x PATH $PATH "/usr/local/opt/make/libexec/gnubin"
+set -x PATH $PATH "/usr/local/opt/coreutils/libexec/gnubin"
 
 # java
-set --export JAVA_HOME `/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
-set --export PATH "$JAVA_HOME/bin" $PATH
+set -x JAVA_HOME (/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8")
+set -x PATH $PATH "$JAVA_HOME/bin"
+
+# openssl
+set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths
 
 # alias
 alias be "bundle exec"
 alias rue "rbenv exec"
 alias goe "goenv exec"
 alias nde "nodenv exec"
+
+# editor
+set -x EDITOR vim
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
