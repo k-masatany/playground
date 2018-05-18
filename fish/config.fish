@@ -87,6 +87,7 @@ alias be "bundle exec"
 alias rue "rbenv exec"
 alias goe "goenv exec"
 alias nde "nodenv exec"
+alias review "docker run --rm -v (pwd):/work vvakame/review"
 
 # editor
 set -x EDITOR vim
