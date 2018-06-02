@@ -83,18 +83,18 @@ set -x PATH $PATH "$JAVA_HOME/bin"
 set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths
 
 # alias
-alias be "bundle exec"
-alias rue "rbenv exec"
-alias goe "goenv exec"
-alias nde "nodenv exec"
 alias review "docker run --rm -v (pwd):/work vvakame/review"
+alias v "vim"
+alias s "slack-term"
+alias toen "trans ja:en"
+alias toja "trans en:ja"
+alias ruby "rbenv exec ruby"
+alias rails "bundle exec rails"
+alias rake "bundle exec rake"
+alias node "nodenv exec node"
+alias npm "nodenv exec npm"
+alias yarn "nodenv exec yarn"
+alias eslint "nodenv exec eslint"
 
 # editor
 set -x EDITOR vim
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/k-masatany/.ghq/github.com/k-masatany/master-up/node_modules/tabtab/.completions/serverless.fish ]; and . /Users/k-masatany/.ghq/github.com/k-masatany/master-up/node_modules/tabtab/.completions/serverless.fish
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/k-masatany/.ghq/github.com/k-masatany/master-up/node_modules/tabtab/.completions/sls.fish ]; and . /Users/k-masatany/.ghq/github.com/k-masatany/master-up/node_modules/tabtab/.completions/sls.fish
