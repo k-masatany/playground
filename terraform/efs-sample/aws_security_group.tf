@@ -66,6 +66,7 @@ resource "aws_security_group" "efs-sample-rds" {
 }
 
 resource "aws_security_group_rule" "efs-sample-rds" {
+  count                    = "${var.settings["needRDS"] == true ? 1 :0}"
   security_group_id        = "${aws_security_group.efs-sample-rds.id}"
   type                     = "ingress"
   from_port                = 3306
@@ -75,6 +76,7 @@ resource "aws_security_group_rule" "efs-sample-rds" {
 }
 
 resource "aws_security_group_rule" "efs-sample-rds-1" {
+  count             = "${var.settings["needRDS"] == true ? 1 :0}"
   security_group_id = "${aws_security_group.efs-sample-rds.id}"
   type              = "egress"
   from_port         = 0

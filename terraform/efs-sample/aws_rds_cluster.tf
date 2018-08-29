@@ -1,4 +1,5 @@
 resource "aws_rds_cluster" "efs-sample" {
+  count                           = "${var.settings["needRDS"] == true ? 1 :0}"
   cluster_identifier              = "efs-sample"
   engine                          = "aurora-mysql"
   master_username                 = "efs_sample"

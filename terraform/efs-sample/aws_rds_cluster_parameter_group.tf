@@ -1,4 +1,5 @@
 resource "aws_rds_cluster_parameter_group" "efs-sample" {
+  count       = "${var.settings["needRDS"] == true ? 1 :0}"
   name        = "efs-sample"
   family      = "aurora-mysql5.7"
   description = "Cluster Parameter Group for efs-sample"
